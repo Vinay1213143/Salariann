@@ -1,0 +1,62 @@
+\documentclass[12pt,a4paper]{report}
+
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+\usepackage{setspace}
+\setstretch{1.5}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{caption}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows, positioning, fit, calc}
+
+% Styling
+\titleformat{\chapter}[display]
+  {\normalfont\bfseries\Large\centering}{\chaptertitlename\ \thechapter}{10pt}{\Large}
+\titleformat{\section}
+  {\normalfont\bfseries\large}{\thesection}{1em}{}
+
+% Listings configuration
+\lstset{
+    basicstyle=\ttfamily\small,
+    breaklines=true,
+    frame=single,
+    backgroundcolor=\color{gray!10},
+    keywordstyle=\color{blue},
+    commentstyle=\color{green!60!black},
+    stringstyle=\color{red}
+}
+
+\begin{document}
+
+% Preliminary Pages
+\include{chapters/00_front_matter}
+
+% Chapters
+\include{chapters/01_introduction}
+\include{chapters/02_literature_survey}
+\include{chapters/03_proposed_system}
+\include{chapters/04_system_design}
+\include{chapters/05_technology_overview}
+\include{chapters/06_system_implementation}
+\include{chapters/07_results}
+\include{chapters/08_conclusion}
+
+% Appendices
+\appendix
+\include{chapters/09_appendices}
+
+% References
+\bibliographystyle{ieeetr}
+\bibliography{references}
+
+\end{document}

@@ -1,0 +1,67 @@
+\chapter{System Implementation}
+
+\section{Module-wise Implementation}
+The implementation focused on modularity, utilizing an MVC pattern on the backend and Provider-driven reactive UI on the frontend.
+
+\subsection{Frontend Job Card Implementation}
+The UI utilizes LayoutBuilder to handle responsive design seamlessly.
+\begin{lstlisting}[language=Dart, caption=Flutter Job Card Widget]
+// Listing 6.1: Job Card UI using Flutter
+class JobCard extends StatelessWidget {
+  final Job job;
+  const JobCard({required this.job});
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: ListTile(
+        title: Text(job.title),
+        subtitle: Text('${job.city} - ${job.salaryRange}'),
+        // Displays the RED/YELLOW/GREEN badge
+        trailing: SuitabilityBadge(score: job.suitabilityScore),
+        onTap: () => context.push('/job/${job.id}'),
+      ),
+    );
+  }
+}
+\end{lstlisting}
+
+\subsection{Backend Suitability Logic}
+The scoring logic executes as a pure function to ensure testability and performance.
+\begin{lstlisting}[language=JavaScript, caption=Suitability Engine in Node.js]
+// Listing 6.2: Node.js Suitability Calculation Logic
+function calculateSuitability(job, metrics) {
+    const netMonthly = (job.annual_ctc / 12) * 0.88;
+    const expenses = metrics.rent + metrics.food + metrics.commute + metrics.utilities;
+    const disposable = netMonthly - expenses;
+    const savingsPct = (disposable / netMonthly) * 100;
+    
+    let score = "RED";
+    if (savingsPct >= 30) score = "GREEN";
+    else if (savingsPct >= 10) score = "YELLOW";
+    
+    return {
+        score,
+        breakdown: { netMonthly, expenses, disposable, savingsPct }
+    };
+}
+\end{lstlisting}
+
+\section{System Workflow Algorithm}
+\textbf{Algorithm 1: Suitability Evaluation}
+\begin{verbatim}
+Require: job_salary, city, user_lifestyle
+Ensure: traffic_light_score
+1: net_income = (job_salary / 12) * 0.88
+2: metrics = db.get_city_metrics(city, user_lifestyle)
+3: expenses = metrics.rent + metrics.food + metrics.commute
+4: disposable = net_income - expenses
+5: savings_pct = (disposable / net_income) * 100
+6: if savings_pct > 30 then
+7:    return "GREEN"
+8: else if savings_pct > 10 then
+9:    return "YELLOW"
+10: else
+11:   return "RED"
+12: end if
+\end{verbatim}

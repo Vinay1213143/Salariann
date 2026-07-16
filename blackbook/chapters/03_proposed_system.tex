@@ -1,0 +1,59 @@
+\chapter{Proposed System}
+
+\section{System Overview}
+Salariann is built on a modern, decoupled architecture. It acts as an intermediary discovery layer that ingests job postings, retrieves localized economic data, calculates a personalized viability score for the user, and presents the aggregated data through a unified UI.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[node distance=2cm, auto,
+    box/.style={rectangle, draw, fill=blue!10, text width=3cm, text centered, rounded corners, minimum height=1.5cm}]
+    \node [box] (frontend) {Frontend: Flutter App};
+    \node [box, right=of frontend] (backend) {Backend API: Node.js/Express};
+    \node [box, above=of backend] (ai) {Suitability Score Engine};
+    \node [box, below=of backend] (db) {Database: Supabase/PostgreSQL};
+    
+    \draw [latex'-latex'] (frontend) -- node[above, text width=2.5cm, text centered]{\footnotesize User Input \& Output} (backend);
+    \draw [latex'-latex'] (backend) -- node[left]{\footnotesize Payload} (ai);
+    \draw [latex'-latex'] (backend) -- node[left]{\footnotesize CRUD Ops} (db);
+\end{tikzpicture}
+\caption{High-Level Architecture of Salariann}
+\end{figure}
+
+\section{System Components}
+\begin{enumerate}
+    \item \textbf{Frontend App Module:} Built with Flutter (Material 3) handling state management via Provider. Responsibilities include rendering the UI, capturing user interactions, and displaying the traffic-light badge.
+    \item \textbf{Backend API Gateway:} Node.js Express server handling 20+ REST endpoints for jobs, companies, and reviews, enforcing JWT authentication \cite{nodejs}.
+    \item \textbf{Suitability Score Engine:} Calculates the core financial metric.
+\end{enumerate}
+
+\subsection{Suitability Score Mathematical Formula}
+The suitability engine dynamically calculates a user's savings percentage.
+\begin{equation}
+    \text{Net Monthly} = \left(\frac{\text{CTC}}{12}\right) \times 0.88
+\end{equation}
+\begin{equation}
+    \text{Disposable Income} = \text{Net Monthly} - \text{Total Expenses}
+\end{equation}
+\begin{equation}
+    \text{Savings } \% = \left(\frac{\text{Disposable Income}}{\text{Net Monthly}}\right) \times 100
+\end{equation}
+\textit{Where 0.88 represents an approximate post-tax multiplier, and Total Expenses are dynamically fetched based on city and lifestyle.}
+
+\section{AI Integration and Data Flow}
+\begin{itemize}
+    \item \textbf{Automated Alignment:} Raw salary ranges are normalized into numeric structures for consistent processing.
+    \item \textbf{Context-Aware Scoring:} The engine dynamically adjusts metric thresholds depending on the user's stored lifestyle preference (Single vs. Family).
+\end{itemize}
+
+\section{Detailed Workflow of the System}
+\begin{enumerate}
+    \item User logs into the Flutter app via Supabase Auth.
+    \item User profile fetches lifestyle preferences.
+    \item User navigates to the Job Dashboard.
+    \item App sends GET request with city/role filters to Node.js backend.
+    \item Backend queries PostgreSQL for jobs and associated city\_metrics.
+    \item Suitability Score Engine calculates the Savings \% for each job.
+    \item Backend responds with job data and assigned GREEN/YELLOW/RED scores.
+    \item Frontend renders job cards with suitability badges.
+    \item User clicks ``Apply'', which logs a click\_event and redirects to the ATS.
+\end{enumerate}

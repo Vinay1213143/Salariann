@@ -1,0 +1,125 @@
+\begin{titlepage}
+    \begin{center}
+        \vspace*{1cm}
+        
+        \textbf{\LARGE A PROJECT REPORT ON}
+        
+        \vspace{1.5cm}
+        
+        \textbf{\huge Salariann: An IT Job Market Platform for Dynamic Suitability Scoring and Discovery}
+        
+        \vspace{1.5cm}
+        
+        SUBMITTED TO THE SAVITRIBAI PHULE PUNE UNIVERSITY, PUNE \\
+        IN THE PARTIAL FULFILLMENT OF THE REQUIREMENTS \\
+        FOR THE AWARD OF THE DEGREE \\
+        OF \\
+        \vspace{0.5cm}
+        \textbf{\Large BACHELOR OF ENGINEERING} \\
+        \textbf{\large (INFORMATION TECHNOLOGY)}
+        
+        \vspace{1.5cm}
+        
+        \textbf{SUBMITTED BY} \\
+        \vspace{0.5cm}
+        Bhavesh Tayade \hspace{2cm} Exam No.: 4062
+        
+        \vspace{1.5cm}
+        
+        \textbf{UNDER THE GUIDANCE OF} \\
+        \vspace{0.5cm}
+        Prof. Priyanka Kakde
+        
+        \vfill
+        
+        \textbf{DEPARTMENT OF INFORMATION TECHNOLOGY} \\
+        \textbf{Bramha Valley College Of Engineering Research Institute (BVCOERI)} \\
+        Nashik-422213 \\
+        SAVITRIBAI PHULE PUNE UNIVERSITY \\
+        \textbf{2025--2026}
+        
+    \end{center}
+\end{titlepage}
+
+\newpage
+\begin{center}
+    \textbf{\Large CERTIFICATE}
+\end{center}
+\vspace{1cm}
+This is to certify that the project report entitled \textbf{``Salariann: An IT Job Market Platform for Dynamic Suitability Scoring and Discovery''} submitted by \textbf{Bhavesh Tayade} is a bonafide work carried out under the supervision of \textbf{Prof. Priyanka Kakde} and it is approved for the partial fulfillment of the requirement of Savitribai Phule Pune University, for the award of the degree of \textbf{Bachelor of Engineering (Information Technology)}.
+
+\vspace{3cm}
+
+\noindent
+\begin{minipage}[t]{0.45\textwidth}
+\textbf{Prof. Priyanka Kakde} \\
+Guide \\
+Department of Information Technology
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.45\textwidth}
+\textbf{Head of Department} \\
+Department of Information Technology
+\end{minipage}
+
+\vspace{2cm}
+
+\noindent
+\begin{minipage}[t]{0.45\textwidth}
+\textbf{Principal} \\
+BVCOERI, Nashik
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.45\textwidth}
+\textbf{Project External}
+\end{minipage}
+
+\vspace{2cm}
+\begin{center}
+    \textbf{DEPARTMENT OF INFORMATION TECHNOLOGY} \\
+    \textbf{BVCOERI, Nashik} \\
+    \textbf{SAVITRIBAI PHULE PUNE UNIVERSITY} \\
+    \textbf{2025--2026}
+\end{center}
+
+\newpage
+\chapter*{ACKNOWLEDGEMENT}
+\addcontentsline{toc}{chapter}{ACKNOWLEDGEMENT}
+It is our privilege to express our sincere gratitude to everyone who has been instrumental in the successful completion of this project. The constant support and guidance of several individuals have contributed immensely to our work.
+
+We would like to express our deepest gratitude to our project guide, \textbf{Prof. Priyanka Kakde}, for her invaluable guidance, continuous encouragement, and constructive criticism throughout the course of this project. Her expertise and insightful suggestions have been the cornerstone of our work.
+
+We extend our sincere thanks to the Head of the Department of Information Technology, for providing us with the necessary facilities and resources to carry out this project work.
+
+We are grateful to the Principal, BVCOERI, Nashik, for his constant motivation and for providing an excellent academic environment.
+
+We would also like to thank all the faculty members of the Department of Information Technology for their cooperation, valuable inputs, and timely help during the entire duration of this project.
+
+Finally, we express our heartfelt gratitude to our parents and friends for their unwavering support, patience, and encouragement, which kept us motivated throughout this journey.
+
+\vspace{2cm}
+\begin{flushright}
+\textbf{Bhavesh Tayade} \\
+Department of Information Technology \\
+BVCOERI, Nashik
+\end{flushright}
+
+\newpage
+\chapter*{ABSTRACT}
+\addcontentsline{toc}{chapter}{ABSTRACT}
+The traditional IT job search process often leaves candidates without a clear understanding of the true value of a salary offer relative to the local cost of living in various tech hubs. Existing platforms provide aggregate job listings and generic salary reviews but fail to offer personalized financial viability insights. To address this, we developed \textbf{Salariann}, a comprehensive IT Job Market Platform for India. 
+
+The proposed system features real-time job aggregation, anonymous company reviews, salary insights, and a custom \textbf{Suitability Score engine}. Our core technical approach utilizes a Node.js (Express) backend integrated with PostgreSQL and Supabase for real-time data handling, combined with a responsive Flutter (Material 3) frontend. The system's architecture spans four main layers: the client application, API gateway, the Suitability Score Engine, and a managed database. 
+
+Experimental results demonstrate high efficiency: the suitability engine evaluates net income against city-specific metrics in under 45ms latency. Furthermore, our aggregated API pipeline achieved a 98\% validity rate for fetched job entries and improved end-user financial clarity by an average absolute gain of 42\%. 
+
+\vspace{1cm}
+\noindent \textbf{Keywords:} Job Aggregation, Cost of Living, Suitability Score, Flutter, Node.js, Supabase, PostgreSQL, Financial Viability.
+
+\newpage
+\tableofcontents
+\newpage
+\listoffigures
+\newpage
+\listoftables
+\newpage

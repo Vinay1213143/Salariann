@@ -1,0 +1,53 @@
+\chapter{Appendices}
+
+\section*{Appendix A: System API Documentation}
+\addcontentsline{toc}{section}{Appendix A: System API Documentation}
+
+\textbf{GET /api/jobs} \\
+Returns JSON array of jobs filtered by query parameters. \\
+
+\textbf{POST /api/reviews} \\
+Request Payload:
+\begin{lstlisting}[language=json]
+{
+  "company_id": "uuid",
+  "rating": 5,
+  "pros": "Great work-life balance",
+  "cons": "None"
+}
+\end{lstlisting}
+
+\section*{Appendix B: Database Schema Definitions}
+\addcontentsline{toc}{section}{Appendix B: Database Schema Definitions}
+
+\begin{lstlisting}[language=SQL]
+CREATE TABLE users (
+  id UUID PRIMARY KEY REFERENCES auth.users,
+  display_name TEXT,
+  lifestyle TEXT CHECK (lifestyle IN ('single', 'family'))
+);
+
+CREATE TABLE city_metrics (
+  city TEXT,
+  lifestyle TEXT,
+  rent NUMERIC,
+  food NUMERIC,
+  PRIMARY KEY (city, lifestyle)
+);
+\end{lstlisting}
+
+\section*{Appendix E: Sample Generated Artifact}
+\addcontentsline{toc}{section}{Appendix E: Sample Generated Artifact}
+
+\begin{lstlisting}[language=json]
+{
+  "job_id": "123",
+  "title": "Backend Developer",
+  "score": "GREEN",
+  "breakdown": {
+     "net_monthly": 88000,
+     "expenses": 45000,
+     "savings": 43000
+  }
+}
+\end{lstlisting}

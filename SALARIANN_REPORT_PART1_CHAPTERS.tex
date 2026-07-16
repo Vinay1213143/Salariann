@@ -1,0 +1,171 @@
+% ============================================================================
+% CHAPTER 1 & 2 CONTENT FROM PART 1
+% ============================================================================
+% This file contains only the chapter content (no document class or preamble)
+% To be imported by COMPILE_ALL.tex
+
+\newpage
+\pagestyle{fancy}
+\chapter{Introduction}
+
+\section{Background}
+
+The Indian IT job market has experienced exponential growth over the past decade, with thousands of job openings across multiple cities and skill levels. However, job seekers face a critical challenge: while numerous job boards exist, they provide limited context regarding the actual viability of accepting a position in a given city. Salary information is often incomplete, outdated, or inconsistent across platforms. More importantly, the cost of living varies dramatically across Indian metropolitan areas---a salary of ₹60 lakhs in Bangalore carries vastly different purchasing power than the same salary in Pune or Hyderabad.
+
+Existing platforms such as LinkedIn, Indeed, and Naukri.com excel at job discovery but fail to provide integrated affordability analysis. Professionals must manually cross-reference salary data with cost-of-living estimates from separate sources, a time-consuming and error-prone process. This fragmentation leads to suboptimal career decisions, with candidates accepting positions that appear lucrative on paper but offer limited disposable income after accounting for local living expenses.
+
+Salariann addresses this gap by creating a unified platform that combines real-time job discovery, transparent salary information, and dynamic cost-of-living analysis. The system empowers IT professionals to make informed career decisions by presenting jobs not merely as opportunities, but as complete financial and lifestyle packages tailored to their personal circumstances.
+
+\section{Problem Statement}
+
+The following concrete limitations of existing job search platforms directly motivate the features implemented in Salariann:
+
+\begin{enumerate}
+    \item \textbf{Fragmented Information Silos}: Job boards, salary databases, and cost-of-living resources operate independently. Professionals must manually aggregate data from multiple sources, increasing decision latency and introducing data inconsistency errors.
+    
+    \item \textbf{Lack of Affordability Context}: Salary figures are presented in isolation without reference to local living expenses. A ₹50 lakh salary in Bangalore may offer less disposable income than a ₹40 lakh salary in Pune, yet this critical insight is unavailable on standard job boards.
+    
+    \item \textbf{Stale and Incomplete Data}: Most job platforms update infrequently and rely on user submissions. Cost-of-living data is rarely current, with many platforms using year-old estimates that fail to reflect inflation and market shifts.
+    
+    \item \textbf{Limited Personalization}: Job recommendations ignore the user's lifestyle preferences (single vs. family), financial goals, and geographic constraints. The same job listing appears to all users regardless of their circumstances.
+    
+    \item \textbf{Absence of Career Trajectory Insights}: Platforms do not correlate job offers with long-term salary growth, skill development opportunities, or company reputation metrics, forcing users to rely on external research for career planning.
+\end{enumerate}
+
+\section{Objectives}
+
+The project is structured around six core objectives:
+
+\begin{enumerate}
+    \item To design and implement a real-time job aggregation engine that fetches live job listings from multiple sources, normalizes heterogeneous data formats, and presents a unified job catalog with consistent metadata.
+    
+    \item To develop a dynamic cost-of-living analysis module that scrapes current affordability data from authoritative sources, calculates city-specific expense profiles, and integrates this data with salary information to produce affordability scores.
+    
+    \item To create a personalized career insights engine that correlates job offers with user preferences, lifestyle choices, and financial goals, generating tailored recommendations and career trajectory projections.
+    
+    \item To build a responsive, user-friendly interface that presents complex career data in an intuitive, visually engaging format accessible across desktop, tablet, and mobile devices.
+    
+    \item To establish a secure, scalable backend infrastructure that handles concurrent user sessions, integrates with external APIs, manages user authentication, and ensures data persistence and availability.
+    
+    \item To implement comprehensive system monitoring and analytics that track user behavior, measure system performance, identify bottlenecks, and provide insights for continuous improvement.
+\end{enumerate}
+
+\section{Scope of the Project}
+
+Salariann is scoped as follows:
+
+\begin{itemize}
+    \item \textbf{Geographic Coverage}: The system initially targets 15+ major Indian IT hubs including Bangalore, Hyderabad, Pune, Mumbai, Delhi, Gurgaon, Noida, Chennai, Kolkata, Ahmedabad, Indore, Jaipur, Kochi, and Chandigarh.
+    
+    \item \textbf{Job Categories}: The platform focuses exclusively on IT sector roles including Software Engineers, Data Scientists, DevOps Engineers, QA Engineers, Product Managers, and related technical positions.
+    
+    \item \textbf{User Base}: The primary user base comprises IT professionals with 0-15 years of experience, ranging from entry-level graduates to mid-career professionals considering lateral moves or promotions.
+    
+    \item \textbf{Data Sources}: The system integrates with the JSearch API for live job listings and Numbeo for cost-of-living data. User-generated content (reviews, salary submissions) is stored locally in the Supabase database.
+    
+    \item \textbf{Functionality Exclusions}: The system does not provide interview preparation, resume optimization, or direct employer communication features. These are intentionally scoped out to maintain focus on the core affordability-driven job discovery mission.
+\end{itemize}
+
+\section{Organization of the Report}
+
+The remainder of this report is organized as follows:
+
+\begin{itemize}
+    \item \textbf{Chapter 2: Literature Survey} examines existing job search platforms, cost-of-living analysis tools, and recommendation algorithms, identifying the research gap that Salariann addresses.
+    
+    \item \textbf{Chapter 3: Proposed System} describes the high-level architecture, core modules, AI integration points, and end-to-end user workflows.
+    
+    \item \textbf{Chapter 4: System Design} presents detailed architectural diagrams, data flow models, UML specifications, and database schema definitions.
+    
+    \item \textbf{Chapter 5: Technology and Tools Overview} justifies the selection of each technology component, from frontend frameworks to backend services to deployment infrastructure.
+    
+    \item \textbf{Chapter 6: System Implementation} provides code listings and pseudocode for critical modules, demonstrating the technical realization of the proposed design.
+    
+    \item \textbf{Chapter 7: Result and Performance Analysis} presents quantitative metrics, benchmark results, and performance analysis validating the system's effectiveness.
+    
+    \item \textbf{Chapter 8: Conclusion and Future Work} summarizes contributions, discusses limitations, and outlines directions for future enhancement.
+\end{itemize}
+
+% ============================================================================
+% CHAPTER 2: LITERATURE SURVEY
+% ============================================================================
+\chapter{Literature Survey}
+
+\section{Overview}
+
+The job search and career planning domain has evolved significantly over the past two decades. Early platforms relied on manual job postings and keyword-based search (rule-based era). The emergence of machine learning enabled collaborative filtering and content-based recommendation systems (data-driven era). Today, large language models and generative AI are beginning to reshape the landscape, offering natural language understanding, semantic job matching, and conversational career guidance (AI-driven era). However, a critical gap remains: while modern platforms excel at job discovery, they largely ignore the affordability dimension---the relationship between salary and local cost of living.
+
+\section{Traditional and Manual Job Search Methods}
+
+\subsection{Job Boards and Classifieds}
+
+Traditional job boards such as Naukri.com, Indeed, and LinkedIn operate as centralized repositories where employers post openings and candidates search by keyword, location, and experience level. These platforms have democratized job discovery, eliminating the need for personal networks or recruitment agencies. However, they suffer from several limitations: (1) job postings are often stale, with many listings remaining active long after positions are filled; (2) salary information is frequently omitted or inaccurate, as employers are incentivized to withhold compensation details; (3) no integration with cost-of-living data means candidates cannot assess the true purchasing power of an offer; (4) search results are ranked by relevance algorithms that prioritize engagement over user utility, surfacing high-traffic companies rather than best-fit opportunities.
+
+\subsection{Recruitment Agencies and Consultants}
+
+Human recruiters provide personalized guidance and negotiate on behalf of candidates, offering advantages that automated systems cannot replicate. However, recruitment agencies introduce conflicts of interest: they are compensated by employers, not candidates, and thus prioritize placement speed over candidate satisfaction. Furthermore, agency services are expensive and inaccessible to early-career professionals, limiting their utility to a privileged subset of the job market.
+
+\section{Data-Driven and Statistical Approaches}
+
+\subsection{Collaborative Filtering and Recommendation Systems}
+
+Collaborative filtering algorithms (user-user and item-item similarity) have been widely adopted by job platforms to recommend positions based on the preferences of similar users. These methods are computationally efficient and require minimal domain knowledge. However, they suffer from the cold-start problem: new users and new jobs lack sufficient interaction history for reliable recommendations. Additionally, collaborative filtering cannot incorporate contextual features such as cost of living, making it unsuitable for affordability-aware job matching.
+
+\subsection{Content-Based Filtering and Semantic Matching}
+
+Content-based approaches represent jobs and user profiles as feature vectors and compute similarity scores. Modern implementations use word embeddings (Word2Vec, GloVe) or transformer-based models (BERT) to capture semantic relationships between job descriptions and user skills. These methods are more robust to cold-start scenarios and can incorporate domain-specific features. However, they require careful feature engineering and struggle with implicit preferences.
+
+\subsection{Salary Prediction and Trend Analysis}
+
+Statistical models (linear regression, gradient boosting) have been applied to predict salaries based on job attributes (role, experience, company, location). Glassdoor and Payscale employ such models to provide salary estimates. However, these models are trained on historical data and lag behind real-time market shifts. More critically, they do not contextualize salary within the cost of living, rendering them incomplete for affordability assessment.
+
+\section{AI and Large Language Model-Based Approaches}
+
+\subsection{Neural Ranking and Deep Learning Models}
+
+Deep learning models (neural networks, LSTMs, attention mechanisms) have achieved state-of-the-art performance on job recommendation tasks by learning non-linear relationships between features. Models such as DeepFM and Wide \& Deep Networks capture both low-order and high-order feature interactions, improving recommendation accuracy over traditional methods. However, these models require large labeled datasets and are computationally expensive to train, limiting their accessibility to well-funded organizations.
+
+\subsection{Large Language Models and Generative AI}
+
+Recent advances in large language models (GPT-3, GPT-4, Claude) have opened new possibilities for conversational job search and AI-powered career coaching. LLMs can understand nuanced career questions, provide contextual advice, and generate personalized job descriptions. However, LLMs introduce new challenges: they are prone to hallucination (generating plausible-sounding but false information), require careful prompt engineering to avoid bias, and incur significant computational and financial costs.
+
+\section{Comparative Analysis}
+
+\begin{table}[H]
+\centering
+\caption{Comparative Analysis of Existing Job Search Platforms}
+\label{tab:comparative}
+\begin{tabular}{|l|l|l|l|l|l|}
+\hline
+\textbf{Approach} & \textbf{Strengths} & \textbf{Weaknesses} & \textbf{Real-Time} & \textbf{Affordability} \\
+\hline
+LinkedIn & Massive DB & Stale data & Partial & No \\
+\hline
+Indeed & Broad coverage & Limited salary & Partial & No \\
+\hline
+Glassdoor & Salary data & Outdated & No & No \\
+\hline
+Payscale & Detailed & Limited & No & No \\
+\hline
+Numbeo & Real-time cost & No jobs & No & Yes (cost) \\
+\hline
+\textbf{Salariann} & \textbf{Real-time + affordability} & \textbf{IT-focused} & \textbf{Yes} & \textbf{Yes} \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{Research Gap}
+
+The comparative analysis reveals four critical gaps in existing solutions:
+
+\begin{enumerate}
+    \item \textbf{Absence of Integrated Affordability Analysis}: No major job platform correlates salary with cost-of-living data.
+    
+    \item \textbf{Limited Real-Time Data Integration}: Most platforms rely on periodic data updates or user submissions.
+    
+    \item \textbf{Lack of Personalized Affordability Scoring}: Existing systems do not account for individual lifestyle preferences.
+    
+    \item \textbf{Insufficient Focus on Emerging Markets}: Few platforms are optimized for the Indian IT job market.
+\end{enumerate}
+
+Salariann directly addresses these gaps by integrating real-time job data with current cost-of-living information, implementing a personalized affordability scoring algorithm, focusing exclusively on the Indian IT sector, and providing a responsive, modern interface that prioritizes affordability-driven decision making.

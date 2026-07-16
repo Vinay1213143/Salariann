@@ -1,0 +1,108 @@
+\chapter{System Design}
+
+\section{System Architecture Diagram}
+The detailed architecture isolates the scoring logic from the CRUD controllers to ensure maintainability. The Node.js backend uses modular routes, middleware for authentication, and specific controllers for Jobs, Companies, Reviews, Salaries, and Interviews. 
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[node distance=1.5cm, auto,
+    client/.style={rectangle, draw, fill=green!10, text width=2.5cm, text centered, rounded corners, minimum height=1cm},
+    api/.style={rectangle, draw, fill=blue!10, text width=2.5cm, text centered, rounded corners, minimum height=1cm},
+    db/.style={cylinder, shape border rotate=90, aspect=0.25, draw, fill=orange!10, text width=2.5cm, text centered, minimum height=1.5cm}]
+    
+    \node [client] (ui) {Flutter UI};
+    \node [api, right=2cm of ui] (express) {Node.js Express};
+    \node [api, right=2cm of express] (score) {Scoring Engine};
+    \node [db, below=1.5cm of express] (postgres) {PostgreSQL};
+    \node [api, right=2cm of postgres] (auth) {Supabase Auth};
+    
+    \draw [latex'-latex'] (ui) -- node[above]{\footnotesize REST API} (express);
+    \draw [latex'-latex'] (express) -- node[above]{\footnotesize Calc Payload} (score);
+    \draw [latex'-latex'] (express) -- node[left]{\footnotesize Queries} (postgres);
+    \draw [latex'-latex'] (express) -- node[right]{\footnotesize Validate JWT} (auth);
+\end{tikzpicture}
+\caption{Detailed System Architecture Diagram}
+\end{figure}
+
+\section{Data Flow Diagrams}
+
+\subsection{Level 0: Context Diagram}
+The Context Diagram shows the system as a single high-level process interacting with external entities.
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[node distance=3cm, auto,
+    entity/.style={rectangle, draw, fill=gray!10, text centered, minimum height=1cm},
+    process/.style={circle, draw, fill=white, text width=2.5cm, text centered}]
+    
+    \node [entity] (user) {User / Job Seeker};
+    \node [process, right=of user] (system) {0.0 \\ Salariann Platform};
+    \node [entity, right=of system] (ats) {External ATS};
+    
+    \draw [-latex'] (user.10) -- node[above]{\footnotesize Search Params} (system.170);
+    \draw [latex'-] (user.350) -- node[below]{\footnotesize Scored Jobs} (system.190);
+    \draw [-latex'] (system) -- node[above]{\footnotesize Redirect} (ats);
+\end{tikzpicture}
+\caption{Level 0 Data Flow Diagram}
+\end{figure}
+
+\subsection{Level 1: Detailed DFD}
+The Level 1 DFD breaks down the platform into functional sub-processes.
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[node distance=2cm, auto,
+    entity/.style={rectangle, draw, fill=gray!10, text centered, minimum height=1cm},
+    process/.style={circle, draw, fill=white, text width=2cm, text centered},
+    store/.style={rectangle, draw, fill=white, text width=2cm, text centered, minimum height=0.8cm}]
+    
+    \node [entity] (user) {User};
+    \node [process, right=1.5cm of user] (p1) {1.0 \\ Auth};
+    \node [store, below=1cm of p1] (d1) {D1: Users DB};
+    \node [process, right=1.5cm of p1] (p2) {2.0 \\ Query Jobs};
+    \node [store, below=1cm of p2] (d2) {D2: Jobs DB};
+    \node [process, right=1.5cm of p2] (p3) {3.0 \\ Engine};
+    \node [store, below=1cm of p3] (d3) {D3: City Metrics};
+    
+    \draw [-latex'] (user) -- node[above]{\footnotesize login} (p1);
+    \draw [-latex'] (p1) -- (d1);
+    \draw [-latex'] (p1) -- node[above]{\footnotesize token} (p2);
+    \draw [latex'-latex'] (p2) -- (d2);
+    \draw [-latex'] (p2) -- node[above]{\footnotesize raw jobs} (p3);
+    \draw [-latex'] (d3) -- (p3);
+    \draw [-latex'] (p3) |- ++(0, 1.5) -| node[above]{\footnotesize scored jobs} (user);
+\end{tikzpicture}
+\caption{Level 1 Data Flow Diagram}
+\end{figure}
+
+\section{UML Diagrams}
+
+\subsection{Class Diagram}
+\begin{table}[H]
+\centering
+\caption{Key Classes and Their Responsibilities}
+\vspace{0.2cm}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Class} & \textbf{Attributes} & \textbf{Methods} \\ \hline
+User & id, name, lifestyle & login(), updateProfile() \\ \hline
+Job & id, title, salary, city & calculateScore(), logClick() \\ \hline
+Company & id, name, emp\_count & getReviews(), getInterviews() \\ \hline
+CityMetric & city, rent, food & getCostBaseline() \\ \hline
+\end{tabular}
+\end{table}
+
+\section{Database and Storage Design}
+The system utilizes a relational PostgreSQL database hosted on Docker via Supabase.
+
+\begin{table}[H]
+\centering
+\caption{Database Schema and Storage Strategy}
+\vspace{0.2cm}
+\begin{tabular}{|l|l|p{6cm}|}
+\hline
+\textbf{Table} & \textbf{Data Paradigm} & \textbf{Description \& Key Fields} \\ \hline
+users & Relational & UUID, lifestyle, display\_name \\ \hline
+jobs & Relational & id, title, salary\_range, ats\_url \\ \hline
+city\_metrics & Config Data & city, lifestyle, rent, food \\ \hline
+reviews & Relational & company\_id, rating, pros, cons \\ \hline
+\end{tabular}
+\end{table}

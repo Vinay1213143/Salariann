@@ -1,0 +1,43 @@
+\chapter{Introduction}
+
+\section{Background}
+The Indian IT sector employs millions of professionals across major hubs like Bangalore, Hyderabad, Pune, and NCR. As the cost of living fluctuates significantly between these cities, a gross CTC offer does not accurately reflect a candidate's potential disposable income. Existing job platforms \cite{salary_est} provide salary ranges but leave the burden of financial calculation and lifestyle assessment entirely on the candidate. The proposed system, Salariann, introduces a localized, data-driven approach by integrating job listings with real-time cost-of-living metrics to output a concrete viability score.
+
+\section{Problem Statement}
+The current status quo in the IT job market presents several limitations:
+\begin{enumerate}
+    \item \textbf{Financial Ambiguity:} Lack of unified platforms combining job listings with specific city-wise living expenses.
+    \item \textbf{Manual Calculation:} Inability to instantly calculate net disposable income from a gross CTC offer.
+    \item \textbf{Opaque Culture:} Insufficient transparency regarding company-specific interview experiences and internal culture.
+    \item \textbf{Fragmented Journeys:} Candidates must use separate tools for job hunting, salary calculation, and company research.
+\end{enumerate}
+
+\section{Objectives}
+The primary objectives of this project are:
+\begin{enumerate}
+    \item To aggregate IT job listings across multiple Indian tech hubs.
+    \item To compute personalized financial viability using a Suitability Score engine.
+    \item To facilitate anonymous user contributions for company reviews, salaries, and interview experiences.
+    \item To deliver a seamless, responsive cross-platform user experience using Flutter \cite{flutter}.
+    \item To maintain robust data security and fast querying using PostgreSQL and Supabase \cite{supabase}.
+\end{enumerate}
+
+\section{Scope of the Project}
+The scope of this project encompasses:
+\begin{itemize}
+    \item Target audience: IT professionals and fresh graduates in India.
+    \item Capabilities: Job filtering by city/role, suitability score generation, read/write access to company insights.
+    \item Boundaries: The platform redirects to external ATS (Applicant Tracking Systems) for the final application submission rather than processing applications internally.
+\end{itemize}
+
+\section{Organization of the Report}
+The remainder of this report is organized as follows:
+\begin{itemize}
+    \item \textbf{Chapter 2:} Discusses the literature survey and existing platforms.
+    \item \textbf{Chapter 3:} Details the proposed system architecture and mathematical models.
+    \item \textbf{Chapter 4:} Covers the detailed system design including UML diagrams and DB schema.
+    \item \textbf{Chapter 5:} Outlines the core technology stack and tools.
+    \item \textbf{Chapter 6:} Explains the system implementation with code examples.
+    \item \textbf{Chapter 7:} Analyzes performance metrics and system latency.
+    \item \textbf{Chapter 8:} Concludes the report and suggests future work.
+\end{itemize}

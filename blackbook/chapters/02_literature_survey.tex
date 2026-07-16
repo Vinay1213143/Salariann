@@ -1,0 +1,53 @@
+\chapter{Literature Survey}
+
+\section{Overview}
+The evolution of job market platforms has transitioned from simple digital notice boards (rule-based) to interactive, data-driven ecosystems. However, there remains a significant gap in platforms that seamlessly merge job discovery with hyper-local financial planning.
+
+\section{Traditional/Manual Methods}
+Early job portals and generic classifieds relied on manual searching. Candidates used spreadsheets to estimate living costs.
+\begin{itemize}
+    \item \textbf{Techniques:} Manual job scraping, static HTML boards.
+    \item \textbf{Strengths:} Simple architecture, low operational cost.
+    \item \textbf{Weaknesses:} Highly fragmented; zero personalization; prone to outdated data.
+\end{itemize}
+
+\section{Single-Purpose Tools}
+Tools like Numbeo \cite{numbeo} or standalone salary calculators provide specific data points.
+\begin{itemize}
+    \item \textbf{Techniques:} Crowdsourced statistical aggregations.
+    \item \textbf{Strengths:} Accurate baseline data for cost of living.
+    \item \textbf{Weaknesses:} Not integrated into the job hunting process; requires manual context switching.
+\end{itemize}
+
+\section{ML/Statistical Approaches in Job Boards}
+Modern platforms (LinkedIn, Glassdoor) use statistical models to estimate salaries.
+\begin{itemize}
+    \item \textbf{Techniques:} Collaborative filtering, regression-based salary estimation \cite{salary_est}.
+    \item \textbf{Strengths:} Massive data pools, relatively accurate market averages.
+    \item \textbf{Weaknesses:} Generalized estimates; lack personalized lifestyle adjustments (e.g., single vs. family rent costs).
+\end{itemize}
+
+\section{Comparative Analysis}
+
+\begin{table}[H]
+\centering
+\caption{Comparative Analysis of Career Planning Approaches}
+\vspace{0.2cm}
+\begin{tabular}{|p{3cm}|p{3cm}|p{3cm}|p{3cm}|p{2cm}|}
+\hline
+\textbf{Approach} & \textbf{Method} & \textbf{Strengths} & \textbf{Weaknesses} & \textbf{Personalized?} \\ \hline
+Traditional Portals & Static Listings & High volume & No financial insights & No \\ \hline
+Single-Purpose Calcs & Statistical formulas & Accurate math & Isolated from jobs & Partial \\ \hline
+Modern Job Boards & ML Regression & Huge dataset & Generalized averages & Partial \\ \hline
+\textbf{Salariann (Proposed)} & \textbf{Algorithmic Scoring} & \textbf{Holistic view} & \textbf{Requires seed data} & \textbf{Yes} \\ \hline
+\end{tabular}
+\end{table}
+
+\section{Research Gap}
+From the literature review, the following primary research gaps are identified:
+\begin{enumerate}
+    \item \textbf{Missing Integration:} Lack of direct integration of living costs into the job browsing interface.
+    \item \textbf{Automated Breakdown:} Lack of automated breakdown of net monthly income vs. localized expenses.
+    \item \textbf{Visual Indication:} Absence of a quick visual indicator (Suitability Score) for financial viability.
+\end{enumerate}
+Salariann directly addresses these gaps by embedding the cost-of-living metrics natively into every job listing.

@@ -1,0 +1,51 @@
+\chapter{Technology and Tools Overview}
+
+\section{Programming Languages}
+\begin{itemize}
+    \item \textbf{Dart:} Utilized for the Flutter framework to enable highly performant, natively compiled code for mobile and web \cite{flutter}.
+    \item \textbf{JavaScript (Node.js):} Utilized for the backend API to handle asynchronous I/O operations and rapid prototyping \cite{nodejs}.
+    \item \textbf{SQL:} Utilized for defining schema migrations, seed data, and complex aggregations in PostgreSQL.
+\end{itemize}
+
+\section{Frameworks \& Libraries}
+\begin{itemize}
+    \item \textbf{Flutter (Material 3):} Cross-platform UI toolkit.
+    \item \textbf{Provider \& GoRouter:} Flutter libraries for reactive state management and declarative routing.
+    \item \textbf{Express.js:} Lightweight web framework for Node.js.
+    \item \textbf{@supabase/supabase-js:} Official Supabase client for database interaction and JWT validation.
+\end{itemize}
+
+\section{Database \& Cloud Services}
+\begin{itemize}
+    \item \textbf{PostgreSQL:} Primary relational database.
+    \item \textbf{Supabase:} Open-source Firebase alternative providing Auth, Storage, and Realtime PostgreSQL subscriptions \cite{supabase}.
+    \item \textbf{Docker \& Docker Compose:} Used to containerize and self-host the entire Supabase backend stack, ensuring environment parity.
+\end{itemize}
+
+\section{Hardware \& Software Requirements}
+\begin{table}[H]
+\centering
+\caption{Hardware Requirements}
+\vspace{0.2cm}
+\begin{tabular}{|l|p{10cm}|}
+\hline
+\textbf{Component} & \textbf{Minimum Specification \& Rationale} \\ \hline
+Processor & Multi-core CPU (for running Docker + Emulators) \\ \hline
+RAM & 8GB (16GB recommended for smooth compiling) \\ \hline
+Storage & 50GB SSD (for fast I/O during builds) \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Software Requirements}
+\vspace{0.2cm}
+\begin{tabular}{|l|p{10cm}|}
+\hline
+\textbf{Software} & \textbf{Version / Notes} \\ \hline
+Operating System & Windows 11 / macOS / Linux \\ \hline
+Node.js & v16+ \\ \hline
+Flutter SDK & v3.0+ \\ \hline
+Docker Engine & Latest \\ \hline
+\end{tabular}
+\end{table}

@@ -1,0 +1,106 @@
+================================================================================
+DOWNLOAD THESE 4 FILES FROM YOUR COMPUTER
+================================================================================
+
+Location: /Users/bhaveshtayade/Desktop/salariann/
+
+Download these 4 files to your computer:
+
+1. OVERLEAF_MASTER_FILE.tex
+2. SALARIANN_REPORT_PART1_CHAPTERS.tex
+3. SALARIANN_REPORT_PART2_CHAPTERS.tex
+4. SALARIANN_REPORT_PART3_CHAPTERS.tex
+
+================================================================================
+HOW TO DOWNLOAD:
+================================================================================
+
+Using Finder (macOS):
+1. Open Finder
+2. Go to: /Users/bhaveshtayade/Desktop/salariann/
+3. Find the 4 files listed above
+4. Right-click → Copy
+5. Paste them to your Downloads folder
+
+Using Terminal:
+cp /Users/bhaveshtayade/Desktop/salariann/OVERLEAF_MASTER_FILE.tex ~/Downloads/
+cp /Users/bhaveshtayade/Desktop/salariann/SALARIANN_REPORT_PART1_CHAPTERS.tex ~/Downloads/
+cp /Users/bhaveshtayade/Desktop/salariann/SALARIANN_REPORT_PART2_CHAPTERS.tex ~/Downloads/
+cp /Users/bhaveshtayade/Desktop/salariann/SALARIANN_REPORT_PART3_CHAPTERS.tex ~/Downloads/
+
+================================================================================
+THEN UPLOAD TO OVERLEAF:
+================================================================================
+
+1. Go to https://www.overleaf.com/
+2. Click "New Project" → "Blank Project"
+3. Name: "Salariann Project Report"
+4. Click "Create"
+
+5. Click "Upload" button (top left)
+6. Select the 4 files you just downloaded
+7. Wait for upload to complete
+
+8. Click Menu (top left)
+9. Find "Main document"
+10. Select "OVERLEAF_MASTER_FILE.tex"
+
+11. Click "Recompile"
+12. Wait 1-2 minutes
+13. PDF appears!
+14. Click "Download PDF"
+
+================================================================================
+FILE DETAILS:
+================================================================================
+
+OVERLEAF_MASTER_FILE.tex
+  • Main file to compile
+  • Contains: Front matter, title page, certificate, acknowledgement, abstract
+  • Imports the 3 chapter files below
+  • Size: ~15 KB
+
+SALARIANN_REPORT_PART1_CHAPTERS.tex
+  • Chapters 1-2: Introduction, Literature Survey
+  • Size: ~25 KB
+
+SALARIANN_REPORT_PART2_CHAPTERS.tex
+  • Chapters 3-4: Proposed System, System Design
+  • Includes: UML diagrams, architecture diagrams
+  • Size: ~30 KB
+
+SALARIANN_REPORT_PART3_CHAPTERS.tex
+  • Chapters 5-8: Technology, Implementation, Results, Conclusion
+  • Includes: Code listings, algorithms, appendices
+  • Size: ~40 KB
+
+================================================================================
+WHAT YOU'LL GET:
+================================================================================
+
+After compilation in Overleaf:
+
+OVERLEAF_MASTER_FILE.pdf (5-10 MB)
+  ✅ 80-100 professional pages
+  ✅ All 8 chapters
+  ✅ 10 diagrams
+  ✅ 16 tables
+  ✅ 3 code listings
+  ✅ Professional formatting
+  ✅ Ready for submission
+
+================================================================================
+QUICK SUMMARY:
+================================================================================
+
+1. Download 4 files from: /Users/bhaveshtayade/Desktop/salariann/
+2. Upload to Overleaf
+3. Set main file to OVERLEAF_MASTER_FILE.tex
+4. Click Recompile
+5. Download PDF
+6. Done! 🎉
+
+Time required: ~5 minutes
+Result: Professional 80-100 page report
+
+================================================================================
