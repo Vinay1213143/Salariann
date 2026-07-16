@@ -10,7 +10,7 @@ salariann/
 └── frontend/              # Flutter Material 3 responsive application
 ```
 
-**Database**: Supabase Cloud (https://ayvwifmobthpievoyzsx.supabase.co)
+**Database**: Supabase Cloud (PostgreSql)
 
 ## Tech Stack
 
