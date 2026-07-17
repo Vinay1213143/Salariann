@@ -16,7 +16,7 @@
 **BACHELOR OF ENGINEERING (B.E.)**
 
 **BY**  
-**Bhavesh Tayade**  
+**Vinay Awari**  
 **Exam No: [To be filled]**
 
 **UNDER THE GUIDANCE OF**  
@@ -32,7 +32,7 @@
 
 ### CERTIFICATE PAGE
 
-This is to certify that the project titled **"SALARIANN: INTELLIGENT JOB SEARCH AND CAREER ANALYSIS PLATFORM"** has been successfully completed by **Bhavesh Tayade** (Exam No: [To be filled]) in partial fulfillment of the requirements for the degree of Bachelor of Engineering in Computer Engineering from Savitribai Phule Pune University.
+This is to certify that the project titled **"SALARIANN: INTELLIGENT JOB SEARCH AND CAREER ANALYSIS PLATFORM"** has been successfully completed by **Vinay Awari** (Exam No: [To be filled]) in partial fulfillment of the requirements for the degree of Bachelor of Engineering in Computer Engineering from Savitribai Phule Pune University.
 
 The project has been examined and is approved for submission.
 
